@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use App\Traits\CrudTrait;
 use Doctrine\ORM\Mapping as ORM;
-
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
 {
+    use CrudTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,15 +26,6 @@ class User
 
     #[ORM\Column(nullable: true)]
     private ?int $creditCard = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $createAt = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $deletedAt = null;
 
     public function getId(): ?int
     {
@@ -83,42 +76,6 @@ class User
     public function setCreditCard(?int $creditCard): self
     {
         $this->creditCard = $creditCard;
-
-        return $this;
-    }
-
-    public function getCreateAt(): ?\DateTimeImmutable
-    {
-        return $this->createAt;
-    }
-
-    public function setCreateAt(\DateTimeImmutable $createAt): self
-    {
-        $this->createAt = $createAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    public function getDeletedAt(): ?\DateTimeImmutable
-    {
-        return $this->deletedAt;
-    }
-
-    public function setDeletedAt(?\DateTimeImmutable $deletedAt): self
-    {
-        $this->deletedAt = $deletedAt;
 
         return $this;
     }
