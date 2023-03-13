@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Traits;
+use Doctrine\ORM\Mapping as ORM;
 
 trait CrudTrait
 {
